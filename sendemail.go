@@ -4,6 +4,7 @@ package main
 import (
     "fmt"
     "log"
+    "net"
     "net/mail"
     "net/smtp"
     "crypto/tls"
@@ -12,9 +13,9 @@ import (
 
 var (
     server = flag.String("mail.server", "", "SMTP Server to send email.")
-    sender = flag.String("mail.sender", "", "sender's email.")
-    senderPassword = flag.String("mail.password", "", "sender's password")
-    receiver = flag.String("mail.to", "", "reciepent's email address.")
+    from = flag.String("mail.from", "", "sender's email.")
+    password = flag.String("mail.password", "", "sender's password")
+    to = flag.String("mail.to", "", "reciepent's email address.")
 )
 
 // Send SSL/TLS Email
@@ -92,5 +93,5 @@ func SendMail(serverName string, sender string, password string, receiver string
 
 func main() {
     flag.Parse()
-    SendMail(server, sender, senderPassword, receiver, "test", "asdfasdfasdfasdf")
+    SendMail(*server, *from, *password, *to, "test", "asdfasdfasdfasdf")
 }
