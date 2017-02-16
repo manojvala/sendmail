@@ -12,6 +12,7 @@ import (
 )
 
 var (
+    //flag.String(name, value, description)
     server = flag.String("mail.server", "", "SMTP Server to send email.")
     from = flag.String("mail.from", "", "sender's email.")
     password = flag.String("mail.password", "", "sender's password")
